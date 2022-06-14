@@ -1,4 +1,4 @@
-# Dual Attention Network for Scene Segmentation
+# Dual Attention Network for Scene Segmentation - Group 16
 
 ## Background
 
