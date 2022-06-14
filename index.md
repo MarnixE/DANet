@@ -14,6 +14,8 @@ In this blog, Duel Attention Network (DANet) will be explained, and a proposal f
 <img src= cv-architecture.png/ width=70% height=70%>
 </p> -->
 
+## Dataset
+
 ## Architecture addition
 % Talk about the addition we made %
 
@@ -22,4 +24,5 @@ In this blog, Duel Attention Network (DANet) will be explained, and a proposal f
 
 
 ## Conclusion
+
 % Conclude on the results / process overall
