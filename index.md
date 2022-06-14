@@ -9,7 +9,7 @@ In this blog, Duel Attention Network (DANet) will be explained, and a proposal f
  
  % Talk about structure %
 
-![Image](TCN_layer.png)
+![Image](cv-architecture.png)
 <!-- <p align="center">
 <img src= cv-architecture.png/ width=70% height=70%>
 </p> -->
