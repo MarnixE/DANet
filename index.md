@@ -23,6 +23,6 @@ In this blog, Duel Attention Network (DANet) will be explained, and a proposal f
 ## Results
 
 
-## Conclusion
+## Discussion and Conclusion
 
 % Conclude on the results / process overall
