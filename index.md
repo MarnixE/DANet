@@ -6,7 +6,12 @@ In this blog, Duel Attention Network (DANet) will be explained, and a proposal f
 
 ## Network architecture
  The architecture is adaptively integrates local features with their global dependencies. Specifically, in the architecture they append
+ 
+ % Talk about structure %
 
+<!-- <p align="center">
+<img src= cv-architecture.PNG >
+</p> -->
 
 ## Architecture addition
 
