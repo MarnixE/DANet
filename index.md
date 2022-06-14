@@ -15,6 +15,7 @@ In this blog, Duel Attention Network (DANet) will be explained, and a proposal f
 </p> -->
 
 ## Architecture addition
+%
 
 
 ## Results
