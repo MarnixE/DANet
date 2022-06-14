@@ -15,10 +15,11 @@ In this blog, Duel Attention Network (DANet) will be explained, and a proposal f
 </p> -->
 
 ## Architecture addition
-%
+% Talk about the addition we made %
 
 
 ## Results
 
 
 ## Conclusion
+% Conclude on the results / process overall
