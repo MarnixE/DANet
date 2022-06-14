@@ -9,9 +9,9 @@ In this blog, Duel Attention Network (DANet) will be explained, and a proposal f
  
  % Talk about structure %
 
-![Image](Dataset_groups.png)
+![Image](TCN_layer.png)
 <!-- <p align="center">
-<img src= cv-architecture.PNG/>
+<img src= cv-architecture.PNG/ width=70% height=70%>
 </p> -->
 
 ## Architecture addition
