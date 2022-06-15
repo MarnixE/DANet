@@ -11,7 +11,7 @@ In this blog, Duel Attention Network (DANet) will be explained, and a proposal f
 <!-- <p align="center">
 <img src= cv-architecture.png/ width=70% height=70%>
 </p> -->
-Dual Attention Network has two types of attention modules to adaptively aggregate long range contextual information to improve feature representation for pixel-level prediction in scene segmentation.  Initially it employs a pretrained residual network with the dilated as the backbone. Then the features from the dilated residual network would be fed into two parallel attention modules named position attention module and channel attention module. The position attention module selectively aggregates the feature at each position by a weighted sum of the features at all positions. So that, similar features would be related to each other regardless of their distances. On the other hand, the channel attention module selectively emphasizes interdependent channel maps by integrating associated features among all channel maps.
+
 
 ## Architecture addition
 To increase the performance of the architecture we wanted to add clustering layers before the 
@@ -28,12 +28,16 @@ $$d_{i k}=\left\|\mathbf{u}_{i}-\mathbf{v}_{k}\right\|_{2}^{2}, \quad m_{i k}=\f
 
 $$\mathbf{v}_{k} \leftarrow(1-\eta) \mathbf{v}_{k}+\eta \mathbf{v}_{k}^{\prime}, \quad \eta=\frac{\lambda}{s_{k}+\Delta s_{k}}$$
 
-<img src="https://render.githubusercontent.com/render/math?math=\mathbf{v}_{k} \leftarrow(1-\eta) \mathbf{v}_{k}+\eta \mathbf{v}_{k}^{\prime}, \quad \eta=\frac{\lambda}{s_{k}+\Delta s_{k}}">
-
 - **Counter Update.** Lastly a counter update $\mathbf{s}$ is updated and the distance vectors {$\mathbf{d_i}$} are reshaped and returned.
 
 $$\mathbf{s} \leftarrow \mathbf{s} + \Delta \mathbf{s}$$
 
+The above clustering algorthim is used for both attention layers in the DANet architecture. Which results in the following new architecture:
+
+![Image](improved-architecture.png)
+<!-- <p align="center">
+<img src= improved-architecture.png/ width=70% height=70%>
+</p> -->
 
 
 ## Dataset
