@@ -20,7 +20,10 @@ self-attention layers. This idea was based on a paper by Xu et al. Here they imp
 The method employed by the authors and for this project works by clustering individual features at each location in the feature map (i.e. cell features) into multiple centres and employing the cluster centres as filters. 
 
 
-<img src="https://render.githubusercontent.com/render/math?math=\min \sum_{i} \sum_{k} m_{i k}\left\|\mathbf{u}_{i}-\mathbf{v}_{k}\right\|_{2}^{2} \quad \text { s.t. } \quad m_{i k} \in\{0,1\}, \quad \sum_{k} m_{i k}=1">
+$$
+\min \sum_{i} \sum_{k} m_{i k}\left\|\mathbf{u}_{i}-\mathbf{v}_{k}\right\|_{2}^{2} \quad \text { s.t. } \quad m_{i k} \in\{0,1\}, \quad \sum_{k} m_{i k}=1
+$$
+
 
 
 ## Dataset
