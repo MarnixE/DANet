@@ -20,6 +20,9 @@ self-attention layers. This idea was based on a paper by Xu et al. Here they imp
 The method employed by the authors and for this project works by clustering individual features at each location in the feature map (i.e. cell features) into multiple centres and employing the cluster centres as filters. This is done using a mini-batch soft k-means algorithm to cluster the cell features approximately:
 
 -	**Initialization.** Randomly initialize global cluster centers $\mathcal{V}=\left\{\mathbf{v}_{1}, \mathbf{v}_{2}, \ldots, \mathbf{v}_{K}\right\}$ and a counter $\mathbf{s}=\left(s_{1}, s_{2}, \ldots, s_{K}\right)=\mathbf{0}$.
+-	**Cluster assignment.** In the forward step, given input cell features $\mathcal{U}=\left\{\mathbf{u}_{1}, \mathbf{u}_{2}, \ldots, \mathbf{u}_{n}\right\}$, we compute the distance vector $\mathbf{d}_{i}=\left(d_{i 1}, d_{i 2}, \ldots d_{i K}\right)$ between input cell feature $\mathbf{u_i}$ and all cluster centers $\mathcal{V}$. We can then compute the soft assignment $m_{i k} \in \mathbb{R}$ using the softmax function. This will be used to generate the mini-batch centers $v'_k$:
+
+$$d_{i k}=\left\|\mathbf{u}_{i}-\mathbf{v}_{k}\right\|_{2}^{2}, \quad m_{i k}=\frac{e^{-\beta d_{i k}}}{\sum_{j} e^{-\beta d_{i j}}}, \quad \mathbf{v}_{k}^{\prime}=\frac{\sum_{i} m_{i k} \mathbf{u}_{i}}{\sum_{i} m_{i k}}$$
 
 
 
