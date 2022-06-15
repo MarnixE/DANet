@@ -26,7 +26,7 @@ $$d_{i k}=\left\|\mathbf{u}_{i}-\mathbf{v}_{k}\right\|_{2}^{2}, \quad m_{i k}=\f
 
 - **Centroid movement.** In the equation below we formalate $\Delta \mathrm{s}=\sum_{i} \mathbf{m}_{i}$ by summing all maps $\mathbf{m}_{i}=\left(m_{i 1}, m_{i 2}, \ldots m_{i K}\right)$. The mini-batch centers $v'_k$ are then updated to the global center $v_k$ with a momentum coefficient $\eta$.
 
-$\mathbf{v}_{k} \leftarrow(1-\eta) \mathbf{v}_{k}+\eta \mathbf{v}_{k}^{\prime}, \quad \eta=\frac{\lambda}{s_{k}+\Delta s_{k}}$
+$$\mathbf{v}_{k} \leftarrow(1-\eta) \mathbf{v}_{k}+\eta \mathbf{v}_{k}^{\prime}, \quad \eta=\frac{\lambda}{s_{k}+\Delta s_{k}}$$
 
 
 
