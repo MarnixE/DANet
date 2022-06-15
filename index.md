@@ -11,7 +11,7 @@ In this blog, Duel Attention Network (DANet) will be explained, and a proposal f
 <!-- <p align="center">
 <img src= cv-architecture.png/ width=70% height=70%>
 </p> -->
-
+Dual Attention Network has two types of attention modules to adaptively aggregate long range contextual information to improve feature representation for pixel-level prediction in scene segmentation.  Initially it employs a pretrained residual network with the dilated as the backbone. Then the features from the dilated residual network would be fed into two parallel attention modules named position attention module and channel attention module. The position attention module selectively aggregates the feature at each position by a weighted sum of the features at all positions. So that, similar features would be related to each other regardless of their distances. On the other hand, the channel attention module selectively emphasizes interdependent channel maps by integrating associated features among all channel maps.
 
 ## Architecture addition
 To increase the performance of the architecture we wanted to add clustering layers before the 
