@@ -1,4 +1,4 @@
-# Dual Attention Network for Scene Segmentation - Group 16
+# Group 16
 
 * Marnix Enting (4659147) - <m.f.g.enting@student.tudelft.nl>
 * Tishar Sinha (5277876) - <T.Sinha-2@student.tudelft.nl>
