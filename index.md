@@ -28,6 +28,7 @@ $$d_{i k}=\left\|\mathbf{u}_{i}-\mathbf{v}_{k}\right\|_{2}^{2}, \quad m_{i k}=\f
 
 $$\mathbf{v}_{k} \leftarrow(1-\eta) \mathbf{v}_{k}+\eta \mathbf{v}_{k}^{\prime}, \quad \eta=\frac{\lambda}{s_{k}+\Delta s_{k}}$$
 
+
 - **Counter Update.** Lastly a counter update $\mathbf{s}$ is updated and the distance vectors {$\mathbf{d_i}$} are reshaped and returned.
 
 $$\mathbf{s} \leftarrow \mathbf{s} + \Delta \mathbf{s}$$
