@@ -24,9 +24,13 @@ The method employed by the authors and for this project works by clustering indi
 
 $$d_{i k}=\left\|\mathbf{u}_{i}-\mathbf{v}_{k}\right\|_{2}^{2}, \quad m_{i k}=\frac{e^{-\beta d_{i k}}}{\sum_{j} e^{-\beta d_{i j}}}, \quad \mathbf{v}_{k}^{\prime}=\frac{\sum_{i} m_{i k} \mathbf{u}_{i}}{\sum_{i} m_{i k}}$$
 
-- **Centroid movement.** In the equation below we formalate $\Delta \mathrm{s}=\sum_{i} \mathbf{m}_{i}$ by summing all maps $\mathbf{m}_{i}=\left(m_{i 1}, m_{i 2}, \ldots m_{i K}\right)$. The mini-batch centers $v'_k$ are then updated to the global center $v_k$ with a momentum coefficient $\eta$.
+- **Centroid Movement.** In the equation below we formalate $\Delta \mathrm{s}=\sum_{i} \mathbf{m}_{i}$ by summing all maps $\mathbf{m}_{i}=\left(m_{i 1}, m_{i 2}, \ldots m_{i K}\right)$. The mini-batch centers $v'_k$ are then updated to the global center $v_k$ with a momentum coefficient $\eta$.
 
 $$\mathbf{v}_{k} \leftarrow(1-\eta) \mathbf{v}_{k}+\eta \mathbf{v}_{k}^{\prime}, \quad \eta=\frac{\lambda}{s_{k}+\Delta s_{k}}$$
+
+- **Counter Update.** Lastly a counter update $\mathbf{s}$ is updated and the distance vectors {$\mathbf{d_i}$} are reshaped and returned.
+
+$$\mathbf{s} \leftarrow \mathbf{s} + \Delta \mathbf{s}$$
 
 
 
