@@ -14,7 +14,15 @@ In this blog, Duel Attention Network (DANet) will be explained, and a proposal f
 
 
 ## Architecture addition
-% Talk about the addition we made %
+To increase the performance of the architecture we wanted to add clustering layers before the 
+self-attention layers. This idea was based on a paper by Xu et al. Here they implement cell feature clustering. Where cell features are defined as individual local feature at a position in the feature map. By clustering these cell features they are able to model the underlying distribution of input cell features. Through this method, the authors were able to bring 2.5-6.4% performance increase over baseline models. 
+
+The method employed by the authors and for this project works by clustering individual features at each location in the feature map (i.e. cell features) into multiple centres and employing the cluster centres as filters. 
+
+
+<img src="https://render.githubusercontent.com/render/math?math=\min \sum_{i} \sum_{k} m_{i k}\left\|\mathbf{u}_{i}-\mathbf{v}_{k}\right\|_{2}^{2} \quad \text { s.t. } \quad m_{i k} \in\{0,1\}, \quad \sum_{k} m_{i k}=1">
+
+
 ## Dataset
 
 
