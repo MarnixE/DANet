@@ -10,12 +10,12 @@ In this blog, Duel Attention Network (DANet) will be explained, and a proposal f
 Dual Attention Network has two types of attention modules to adaptively aggregate long range contextual information to improve feature representation for pixel-level prediction in scene segmentation.  Initially it employs a pretrained residual network with the dilated as the backbone. Then the features from the dilated residual network would be fed into two parallel attention modules named position attention module and channel attention module. The position attention module selectively aggregates the feature at each position by a weighted sum of the features at all positions. So that, similar features would be related to each other regardless of their distances. On the other hand, the channel attention module selectively emphasizes interdependent channel maps by integrating associated features among all channel maps.
  ![Image](position.png)
 <!-- <p align="center">
-<img src= cv-architecture.png/ width=70% height=70%>
+<img src= position.png/ width=50% height=70%>
 </p> -->
 It first applies a convolution layer to get the features of dimension reduction and then feed it to the positional attention module. In positional attention module it first generates a spatial attention matrix which models the spatial relationship between any two pixels of the features. Next, it performs a matrix multiplication between the attention matrix and the original features. Lastly, it performs an element-wise sum operation on the above multiplied resulting matrix and original features to obtain the final representations reflecting long range contexts.
  ![Image](chann.png)
 <!-- <p align="center">
-<img src= cv-architecture.png/ width=70% height=70%>
+<img src= chann.png/ width=70% height=50%>
 </p> -->
 In channel attention module the process is like position attention module except for the first step, in which channel attention matrix is calculated in channel dimension. In the end it collects the output from both attention module.
 
