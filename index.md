@@ -1,7 +1,5 @@
 # Dual Attention Network for Scene Segmentation - Group 16
-In this blog, Duel Attention Network (DANet) will be explained, and a proposal for an architecture improvement will be given and evaluated. In 2019, Fu et al. published an article that introduces the DANet. This architecture is used for scene segmentation. 
-
-% Explain about scene segmentation and its importance / challenges %
+In this blog, Duel Attention Network (DANet) will be explained, and a proposal for an architecture improvement will be given and evaluated. In 2019, Fu et al. published an article that introduces the DANet. The architecture is used for scene segmentation. This is a fundamental and challenging problem which involves segmenting different image regions with semantic categorious including things (e.g. building, grass, sky) and discrete objects (e.g. pedestrian, car, bicycle). 
 
 
 ## Network architecture
