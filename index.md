@@ -49,7 +49,7 @@ $v_k$ with a momentum coefficient $\eta$.
 <img src= v_ik.png/ width=50% height=30%>
 </p> -->
 
-- **Counter Update.** Lastly a counter update $\mathbf{s}$ is updated and the distance vectors {$\mathbf{d_i}$} are reshaped and returned.
+- **Counter Update.** Lastly a counter update $\mathbf{s}$ is updated and the distance vectors $\mathbf{d_i}$ are reshaped and returned.
 
 $$\mathbf{s} \leftarrow \mathbf{s} + \Delta \mathbf{s}$$
 
