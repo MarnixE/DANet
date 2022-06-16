@@ -103,6 +103,16 @@ if you find DANet and DRANet useful in your research, please consider citing:
 
 
 
-## Acknowledgement
+References:
 
-Thanks [PyTorch-Encoding](https://github.com/zhanghang1989/PyTorch-Encoding), especially the Synchronized BN!
+</h3>
+
+[1]: **Martins, Ines Filipa, et al.** (2012). [A Bayesian approach to
+    in silico blood-brain barrier penetration
+    modeling.](https://pubmed.ncbi.nlm.nih.gov/22612593/) Journal of
+    chemical information and modeling 52.6, 1686-1697
+
+[2]: **van der Maaten, Laurens, Hinton, Geoffrey.** (2008).
+    [Viualizingdata using
+    t-SNE.](https://www.jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf?fbclid=IwAR0Bgg1eA5TFmqOZeCQXsIoL6PKrVXUFaskUKtg6yBhVXAFFvZA6yQiYx-M)
+    Journal of Machine Learning Research. 9. 2579-2605.
