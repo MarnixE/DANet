@@ -34,7 +34,6 @@ The method employed by the authors and for this project works by clustering indi
 
 -	**Initialization.** Randomly initialize global cluster centers $V = \{v_1, v_2, ..., v_K\}$ and a counter $s = (s_1, s_2, ..., s_K) = \textbf{0}$.
 -	**Cluster assignment.** In the forward step, given input cell features $U = \{u_1, u_2, ..., u_n\}$, we compute the distance vector $d_i = (d_{i1}, d_{i2}, ...d_{iK})$ between input cell feature $u_i$ and all cluster centers $V$. We can then compute the soft assignment $m_{i k} \in \mathbb{R}$ using the softmax function. This will be used to generate the mini-batch centers $v'_k$:
--	
 <!-- 
 $$
 d_{ik}= \left \| \mathbf{u}_{i} - \mathbf{v}_{k} \right\|_{2}^{2}, \quad m_{ik}=\frac{e^{-\beta d_{ik}}}{\sum_{j} e^{-\beta d_{ij}}}, \quad \mathbf{v}_{k}^{\prime}=\frac{\sum_{i} m_{ik} \mathbf{u}_{i}}{\sum_{i} m_{ik}}
