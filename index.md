@@ -122,7 +122,7 @@ References:
 [1]: **Jun Fu, Jing Liu, Haijie Tian, Yong Li, Yongjun Bao, Zhiwei Fang, Hanqing Lu** (2019). [Dual Attention Network for Scene Segmentation
     modeling.](https://arxiv.org/pdf/1809.02983.pdf) 
 
-[2]: **van der Maaten, Laurens, Hinton, Geoffrey.** (2008).
-    [Viualizingdata using
-    t-SNE.](https://www.jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf?fbclid=IwAR0Bgg1eA5TFmqOZeCQXsIoL6PKrVXUFaskUKtg6yBhVXAFFvZA6yQiYx-M)
-    Journal of Machine Learning Research. 9. 2579-2605.
+[2]: **Weijian Xu, Yifan Xu, Huaijin Wang & Zhuowen Tu1** (2021).
+    [ATTENTIONAL CONSTELLATION NETS FOR FEW-SHOT
+LEARNING](https://openreview.net/pdf?id=vujTf_I8Kmc)
+    
