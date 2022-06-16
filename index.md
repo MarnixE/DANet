@@ -112,4 +112,17 @@ Due to low GPU resources we were only able to test our intuition on a limited bu
 ClusterDANet obtains better results than DANet for scene segmentation over the PASCAL VOC 2012 dataset (_if turns out to not be true they would be at least comparable_). Therefore our proposed extension has potential for achieving results comparable to the state of the art. Furthermore it seems that ClusterDANet sees bigger objects at a greater extent than DANet.
 
 Future work could build upon our extension in order to tune the required hyperparameters (as number of clusters or epochs), in order to obtain the best possible results ClusterDANet could offer. Furthermore the clustering layer could be extend with a clustering algorithm different from K-Means, where the resulting decision boundaries are non linear.
+* * * * *
 
+<h3>
+References:
+
+</h3>
+
+[1]: **Jun Fu, Jing Liu, Haijie Tian, Yong Li, Yongjun Bao, Zhiwei Fang, Hanqing Lu** (2019). [Dual Attention Network for Scene Segmentation
+    modeling.](https://arxiv.org/pdf/1809.02983.pdf) 
+
+[2]: **van der Maaten, Laurens, Hinton, Geoffrey.** (2008).
+    [Viualizingdata using
+    t-SNE.](https://www.jmlr.org/papers/volume9/vandermaaten08a/vandermaaten08a.pdf?fbclid=IwAR0Bgg1eA5TFmqOZeCQXsIoL6PKrVXUFaskUKtg6yBhVXAFFvZA6yQiYx-M)
+    Journal of Machine Learning Research. 9. 2579-2605.
