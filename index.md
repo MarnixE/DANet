@@ -67,7 +67,9 @@ We trained DANet for PASCAL VOC 2012 using the following hyperparameters:
 - learning rate: 0.003
 - base size: 520
 - crop size: 480
+
 Due to the limitations of the GPU that was available to us we had to limit ourselfves to these more conservative parameters. Therefore we were not able to reproduce the results the author of DANet put forward in their paper. We could however obtain a baseline model against which we could compare our extended model against. 
+
 After training DANet we therefore trained our extended version (ClusterDANet) utilizing the same hyperparameters. We trained the models using Google Colab, on a single GPU. Normal DANet took approximatly 25 minutes per epoch, while ClusterDANet completed every epoch in 38 minutes. The training loss of the two models followed similar patterns. 
 
 
