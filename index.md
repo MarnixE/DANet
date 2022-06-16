@@ -33,17 +33,17 @@ self-attention layers. This idea was based on a paper by <a href="https://openre
 The method employed by the authors and for this project works by clustering individual features at each location in the feature map (i.e. cell features) into multiple centres and employing the cluster centres as filters. This is done using a mini-batch soft k-means algorithm to cluster the cell features approximately. We report here the steps they proposed in their algorithm as they were layed out in their paper:
 
 -	**Initialization.** Randomly initialize global cluster centers $V = \{v_1, v_2, ..., v_K\}$ and a counter $s = (s_1, s_2, ..., s_K) = \textbf{0}$.
--	**Cluster assignment.** In the forward step, given input cell features $U = \{u_1, u_2, ..., u_n\}$, we compute the distance vector $d_i = (d_i1, d_i2, ...d_iK)$ between input cell feature $u_i$ and all cluster centers $V$. We can then compute the soft assignment <img src="https://render.githubusercontent.com/render/math?math=m_{i k} \in \mathbb{R}"> using the softmax function. This will be used to generate the mini-batch centers $v'_k$:
+-	**Cluster assignment.** In the forward step, given input cell features $U = \{u_1, u_2, ..., u_n\}$, we compute the distance vector $d_i = (d_i1, d_i2, ...d_iK)$ between input cell feature $u_i$ and all cluster centers $V$. We can then compute the soft assignment $m_{i k} \in \mathbb{R}$ using the softmax function. This will be used to generate the mini-batch centers $v'_k$:
 
-<!-- $$d_{i k}=\left\|\mathbf{u}_{i}-\mathbf{v}_{k}\right\|_{2}^{2}, \quad m_{i k}=\frac{e^{-\beta d_{i k}}}{\sum_{j} e^{-\beta d_{i j}}}, \quad \mathbf{v}_{k}^{\prime}=\frac{\sum_{i} m_{i k} \mathbf{u}_{i}}{\sum_{i} m_{i k}}$$ -->
-<img src="https://render.githubusercontent.com/render/math?math=d_{i k}=\left\|\mathbf{u}_{i}-\mathbf{v}_{k}\right\|_{2}^{2}, \quad m_{i k}=\frac{e^{-\beta d_{i k}}}{\sum_{j} e^{-\beta d_{i j}}}, \quad \mathbf{v}_{k}^{\prime}=\frac{\sum_{i} m_{i k} \mathbf{u}_{i}}{\sum_{i} m_{i k}}">
+$$d_{i k}=\left\|\mathbf{u}_{i}-\mathbf{v}_{k}\right\|_{2}^{2}, \quad m_{i k}=\frac{e^{-\beta d_{i k}}}{\sum_{j} e^{-\beta d_{i j}}}, \quad \mathbf{v}_{k}^{\prime}=\frac{\sum_{i} m_{i k} \mathbf{u}_{i}}{\sum_{i} m_{i k}}$$
+<!-- <img src="https://render.githubusercontent.com/render/math?math=d_{i k}=\left\|\mathbf{u}_{i}-\mathbf{v}_{k}\right\|_{2}^{2}, \quad m_{i k}=\frac{e^{-\beta d_{i k}}}{\sum_{j} e^{-\beta d_{i j}}}, \quad \mathbf{v}_{k}^{\prime}=\frac{\sum_{i} m_{i k} \mathbf{u}_{i}}{\sum_{i} m_{i k}}"> -->
 
-- **Centroid Movement.** In the equation below we formalate <img src="https://render.githubusercontent.com/render/math?math=\Delta \mathrm{s}=\sum_{i} \mathbf{m}_{i}"> by summing all maps <img src="https://render.githubusercontent.com/render/math?math=\mathbf{m}_{i}=\left(m_{i 1}, m_{i 2}, \ldots m_{i K}\right)">. The mini-batch centers $v'_k$ are then updated to the global center <img src="https://render.githubusercontent.com/render/math?math=v_k"> with a momentum coefficient $\eta$.
-
-<!-- $$
+- **Centroid Movement.** In the equation below we formalate $\Delta \mathrm{s}=\sum_{i} \mathbf{m}_{i}$ by summing all maps $\mathbf{m}_{i}=\left(m_{i 1}, m_{i 2}, \ldots m_{i K}\right)$. The mini-batch centers $v'_k$ are then updated to the global center $v_k$ with a momentum coefficient $\eta$.
+- 
+$$
 \mathbf{v}_{k} \leftarrow(1-\eta) \mathbf{v}_{k}+\eta \mathbf{v}_{k}^{\prime}, \quad \eta=\frac{\lambda}{s_{k}+\Delta s_{k}}
-$$ -->
-<img src="https://render.githubusercontent.com/render/math?math=\mathbf{v}_{k} \leftarrow(1-\eta) \mathbf{v}_{k}+\eta \mathbf{v}_{k}^{\prime}, \quad \eta=\frac{\lambda}{s_{k}+\Delta s_{k}}">
+$$
+<!-- <img src="https://render.githubusercontent.com/render/math?math=\mathbf{v}_{k} \leftarrow(1-\eta) \mathbf{v}_{k}+\eta \mathbf{v}_{k}^{\prime}, \quad \eta=\frac{\lambda}{s_{k}+\Delta s_{k}}"> -->
 
 - **Counter Update.** Lastly a counter update $\mathbf{s}$ is updated and the distance vectors {$\mathbf{d_i}$} are reshaped and returned.
 
