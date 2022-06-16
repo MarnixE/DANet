@@ -40,9 +40,12 @@ The method employed by the authors and for this project works by clustering indi
 <img src= d_ik.png/ width=50% height=30%>
 </p> -->
 
-- **Centroid Movement.** In the equation below we formalate $\Delta \mathbf{s} = \sum_{i} m_{i}$ by summing all maps $$m_{i}= \( m_{i1}, m_{i2}, ... m_{iK}\)$$. The mini-batch centers $v'_k$ are then updated to the global center $v_k$ with a momentum coefficient $\eta$.
+- **Centroid Movement.** In the equation below we formalate $\Delta \mathbf{s} = \sum_{i} m_{i}$ by summing all maps $$m_{i}= ( m_{i1}, m_{i2}, ... m_{iK} )$. The mini-batch centers $v'_k$ are then updated to the global center $v_k$ with a momentum coefficient $\eta$.
 
-$$\mathbf{v}_{k} \leftarrow( 1 - {\eta}) \mathbf{v}_{k} + {\eta} \mathbf{v}'_{k}, \quad {\eta}= \frac{\lambda}{s_{k} + \Delta s_{k}}$$
+ ![Image](v_ik.png)
+<!-- <p align="center">
+<img src= v_ik.png/ width=50% height=30%>
+</p> -->
 
 - **Counter Update.** Lastly a counter update $\mathbf{s}$ is updated and the distance vectors {$\mathbf{d_i}$} are reshaped and returned.
 
