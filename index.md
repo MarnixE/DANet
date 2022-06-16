@@ -61,6 +61,13 @@ The above clustering algorthim is used for both attention layers in the DANet ar
 The dataset used was PASCAL Visual Object Classes (VOC) dataset.  The PASCAL Visual Object Classes (VOC) 2012 dataset contains 20 object categories including vehicles, household, animals, and some others. Every image in this dataset has pixel-level segmentation annotations, bounding box annotations, and object class annotations. This dataset has been widely used as a benchmark for object detection, semantic segmentation, and classification tasks. The PASCAL VOC dataset is split into three subsets: 1,464 images for training, 1,449 images for validation and a private testing set. The Dual Attention Network for Scene Segmentation model on which our model is based on uses Cityscapes, PASCAL VOC 2012, PASCAL Context, COCO Stuff datasets.
 
 ## Results
+We trained DANet for PASCAL VOC 2012 using the following hyperparameters:
+- epochs: 22
+- batches: 6
+- learning rate: 0.003
+- base size: 520
+- crop size: 480
+
 
 
 ## Discussion and Conclusion
