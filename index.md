@@ -40,7 +40,7 @@ d_{ik}= \left \| \mathbf{u}_{i} - \mathbf{v}_{k} \right\|_{2}^{2}, \quad m_{ik}=
 $$ -->
 
  ![Image](d_ik.png)
-<!-- <p align="right">
+<!-- <p align="center">
 <img src= d_ik.png/ width=50% height=30%>
 </p> -->
 
