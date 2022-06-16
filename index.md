@@ -84,6 +84,15 @@ Both models results are not very clear compare to the ground truth labels. We ca
 <img src= cat.png/ width=70% height=70%>
 </p> -->
 
+As is shown in the pictures, typically, ClusterDANet tends to pick up more details when creating a segmentation mask for an object. This supports our intuition that using clustering we can relate bigger components of a picture to each other, rather than each individual pixel. Indeed it seems more intutive to first differentiate between different features of an image (an object part, a hand, a wheel...) and then try to distinguish meaningful relationships between these features using attention (therefore a hand with a head, a wheel with a car...). By adding a clustering layer we try to explicitly model these features, rather than relying only on the implicitly learned ones by the convolutional layers. 
+
+Sometimes, however, the limitations of a linear clustering model as K-Means become apparent, as in the next picture.
+
+ ![Image](car.png)
+<!-- <p align="center">
+<img src= car.png/ width=70% height=70%>
+</p> -->
+
 ## Discussion and Conclusion
 
 % Conclude on the results / process overall
