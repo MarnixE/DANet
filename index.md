@@ -5,7 +5,7 @@
 The link to the original paper can be found <a href="https://arxiv.org/pdf/1809.02983.pdf" title="Link to the paper" >here</a>.
 
 ## Introduction
-In this blog, Duel Attention Network (DANet) will be explained, and a proposal for an architecture improvement will be given and evaluated. In 2019, Fu et al. published an article that introduces the DANet. The architecture is used for scene segmentation. This is a fundamental and challenging problem which involves segmenting different image regions with semantic categorious including things (e.g. building, grass, sky) and discrete objects (e.g. pedestrian, car, bicycle). The study can applied to applications in automatic driving, robot sensing and image editing. In order to effectively solve the task of scene segmentation. A distinction needs to be made effectivly distinguish between objects of similar appaerance. For instance, regions of 'road' and 'concrete' can be indistinhuishable. Likewise, the objects of 'cars' may often be affacted by scales, occlusion and illumination. Therefore, it is required to enhance the disciminiative ability of feature representations at the pixel-level as well as  global level. This is precisecely what the DANet aims to accomplish. Namely, they introduced an architecture with both a position and a channel attention module, to capture both local and global information.
+In this blog, Duel Attention Network (DANet) will be explained, and a proposal for an architecture improvement will be given and evaluated. In 2019, Fu et al. published an article that introduces the DANet. The architecture is used for scene segmentation. This is a fundamental and challenging problem which involves segmenting different image regions with semantic categoris including things (e.g. building, grass, sky) and discrete objects (e.g. pedestrian, car, bicycle). The study can applied to applications in automatic driving, robot sensing and image editing. In order to effectively solve the task of scene segmentation. A distinction needs to be made effectively distinguish between objects of similar appearance. For instance, regions of 'road' and 'concrete' can be indistinguishable. Likewise, the objects of 'cars' may often be affected by scales, occlusion and illumination. Therefore, it is required to enhance the discriminative ability of feature representations at the pixel-level as well as  global level. This is precisely what the DANet aims to accomplish. Namely, they introduced an architecture with both a position and a channel attention module, to capture both local and global information.
 
 
 ## Network architecture
@@ -68,9 +68,9 @@ We trained DANet for PASCAL VOC 2012 using the following hyperparameters:
 - base size: 520
 - crop size: 480
 
-Due to the limitations of the GPU that was available to us we had to limit ourselfves to these more conservative parameters. Therefore we were not able to reproduce the results the author of DANet put forward in their paper. We could however obtain a baseline model against which we could compare our extended model against. 
+Due to the limitations of the GPU that was available to us we had to limit ourselves to these more conservative parameters. Therefore we were not able to reproduce the results the author of DANet put forward in their paper. We could however obtain a baseline model against which we could compare our extended model against. 
 
-After training DANet we therefore trained our extended version (ClusterDANet) utilizing the same hyperparameters. We trained the models using Google Colab, on a single GPU. Normal DANet took approximatly 25 minutes per epoch, while ClusterDANet completed every epoch in 38 minutes. The training loss of the two models followed similar patterns. 
+After training DANet we therefore trained our extended version (ClusterDANet) utilizing the same hyperparameters. We trained the models using Google Colab, on a single GPU. Normal DANet took approximately 25 minutes per epoch, while ClusterDANet completed every epoch in 38 minutes. The training loss of the two models followed similar patterns. 
 
 Both models results are not very clear compare to the ground truth labels. We can however compare them against each other. 
 
@@ -84,7 +84,7 @@ Both models results are not very clear compare to the ground truth labels. We ca
 <img src= cat.png/ width=70% height=70%>
 </p> -->
 
-As is shown in the pictures, typically, ClusterDANet tends to pick up more details when creating a segmentation mask for an object. This supports our intuition that using clustering we can relate bigger components of a picture to each other, rather than each individual pixel. Indeed it seems more intutive to first differentiate between different features of an image (an object part, a hand, a wheel...) and then try to distinguish meaningful relationships between these features using attention (therefore a hand with a head, a wheel with a car...). By adding a clustering layer we try to explicitly model these features, rather than relying only on the implicitly learned ones by the convolutional layers. 
+As is shown in the pictures, typically, ClusterDANet tends to pick up more details when creating a segmentation mask for an object. This supports our intuition that using clustering we can relate bigger components of a picture to each other, rather than each individual pixel. Indeed it seems more intuitive to first differentiate between different features of an image (an object part, a hand, a wheel...) and then try to distinguish meaningful relationships between these features using attention (therefore a hand with a head, a wheel with a car...). By adding a clustering layer we try to explicitly model these features, rather than relying only on the implicitly learned ones by the convolutional layers. 
 
 Sometimes, however, the limitations of a linear clustering model as K-Means become apparent, as in the next picture.
 
@@ -93,6 +93,16 @@ Sometimes, however, the limitations of a linear clustering model as K-Means beco
 <img src= car.png/ width=70% height=70%>
 </p> -->
 
-## Discussion and Conclusion
+Indeed while it is possible to argue that ClusterDANet does at least see the car, compared to normal DANet, its segmentation accuracy nullifies the advantage. We can see how a clear square is cut out in the generated segmentation map. This is probably due the linear nature of the decision boundaries imposed by K-Means.
 
-% Conclude on the results / process overall
+_Here we report the final results (still running accuracy on test set, however seems ClusterDANet is better)_
+
+## Conclusion
+We proposed an architecture extension to the work of Fu et al. based on the model presented by Weijian Xu et a. Our extension is a the addition of a clustering layer before the attention modules of the original network, in order to explicitly model the features present in a given image. We did so by following the intuition that by clustering together parts of an image, the attention layer would be able to better identify meaningful relationships between the objects of a picture and therefore the final architecture would provide better segmentation results. 
+
+Due to low GPU resources we were only able to test our intuition on a limited budget. The results we obtained for our extension and for the baseline original architecture are therefore short compared to the state of the art. However they do offer insights on the comparison between the two models, and given the fact that normal DANet currently provides state of the arts comparable results for segmentation, comparing our model to DANet also offer insights on how it would perform given the right resources. 
+
+ClusterDANet obtains better results than DANet for scene segmentation over the PASCAL VOC 2012 dataset (_if turns out to not be true they would be at least comparable_). Therefore our proposed extension has potential for achieving results comparable to the state of the art. Furthermore it seems that ClusterDANet sees bigger objects at a greater extent than DANet.
+
+Future work could build upon our extension in order to tune the required hyperparameters (as number of clusters or epochs), in order to obtain the best possible results ClusterDANet could offer. Furthermore the clustering layer could be extend with a clustering algorithm different from K-Means, where the resulting decision boundaries are non linear.
+
