@@ -72,7 +72,7 @@ Due to the limitations of the GPU that was available to us we had to limit ourse
 
 After training DANet we therefore trained our extended version (ClusterDANet) utilizing the same hyperparameters. We trained the models using Google Colab, on a single GPU. Normal DANet took approximately 25 minutes per epoch, while ClusterDANet completed every epoch in 38 minutes. The training loss of the two models followed similar patterns. 
 
-Both models results are not very clear compare to the ground truth labels. We can however compare them against each other. 
+Both models results are not very clear compare to the ground truth labels. We can however compare them against each other. The following images were obtained from the validation set of PASCAL VOC 2012.
 
  ![Image](people.png)
 <!-- <p align="center">
