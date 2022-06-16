@@ -1,3 +1,5 @@
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
 * Marnix Enting (4659147) - <m.f.g.enting@student.tudelft.nl>
 * Tishar Sinha (5277876) - <T.Sinha-2@student.tudelft.nl>
 * Dajt Mullaj (5649455) - <d.mullaj@student.tudelft.nl>
