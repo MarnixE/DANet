@@ -107,13 +107,13 @@ def test(args):
         transform.Normalize([.485, .456, .406], [.229, .224, .225])])
     # dataset
     if args.eval:
-        testset = get_dataset(args.dataset, split='val', mode='testval',
+        testset = get_dataset(args.dataset, split='val', mode='val',
                               transform=input_transform)
     elif args.test_val:
-        testset = get_dataset(args.dataset, split='val', mode='test',
+        testset = get_dataset(args.dataset, split='val', mode='val',
                               transform=input_transform)
     else:
-        testset = get_dataset(args.dataset, split='test', mode='test',
+        testset = get_dataset(args.dataset, split='test', mode='val',
                               transform=input_transform)
     # dataloader
     loader_kwargs = {'num_workers': args.workers, 'pin_memory': True} \
@@ -176,7 +176,7 @@ def test(args):
     evaluator = MultiEvalModule(model, testset.num_class, scales=scales).cuda()
     evaluator.eval()
     metric = utils.SegmentationMetric(testset.num_class)
-
+    
     tbar = tqdm(test_data)
     for i, (image, dst) in enumerate(tbar):
         if args.eval:
@@ -192,7 +192,7 @@ def test(args):
                             for output in outputs]
             for predict, impath in zip(predicts, dst):
                 mask = utils.get_mask_pallete(predict, args.dataset)
-                outname = os.path.splitext(impath)[0] + '.png'
+                outname = os.path.splitext(os.path.basename(test_data.dataset.images[i]))[0] + '.png'
                 mask.save(os.path.join(outdir, outname))
 
     if args.eval:
