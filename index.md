@@ -14,17 +14,17 @@ In this blog, Duel Attention Network (DANet) will be explained, and a proposal f
 <!-- <p align="center">
 <img src= cv-architecture.png/ width=70% height=70%>
 </p> -->
-Dual Attention Network has two types of attention modules to adaptively aggregate long range contextual information to improve feature representation for pixel-level prediction in scene segmentation.  Initially it employs a pretrained residual network with the dilated as the backbone. Then the features from the dilated residual network would be fed into two parallel attention modules named position attention module and channel attention module. The position attention module selectively aggregates the feature at each position by a weighted sum of the features at all positions. So that, similar features would be related to each other regardless of their distances. On the other hand, the channel attention module selectively emphasizes interdependent channel maps by integrating associated features among all channel maps.
+Dual Attention Network has two types of attention modules to adaptively aggregate long-range contextual information to improve feature representation for pixel-level prediction in scene segmentation. Initially, it employs a pre-trained residual network with the dilated as the backbone. Then the features from the dilated residual network would be fed into two parallel attention modules named position attention module and channel attention module. The position attention module selectively aggregates the feature at each position by a weighted sum of the features at all positions. So that, similar features would be related to each other regardless of their distances. On the other hand, the channel attention module selectively emphasizes interdependent channel maps by integrating associated features among all channel maps.
  ![Image](position.png)
 <!-- <p align="center">
 <img src= position.png/ width=50% height=50%>
 </p> -->
-It first applies a convolution layer to get the features of dimension reduction and then feed it to the positional attention module. In positional attention module it first generates a spatial attention matrix which models the spatial relationship between any two pixels of the features. Next, it performs a matrix multiplication between the attention matrix and the original features. Lastly, it performs an element-wise sum operation on the above multiplied resulting matrix and original features to obtain the final representations reflecting long range contexts.
+It first applies a convolution layer to get the features of dimension reduction and then feeds it to the positional attention module. The positional attention module first generates a spatial attention matrix that models the spatial relationship between any two pixels of the features. Next, it performs a matrix multiplication between the attention matrix and the original features. Lastly, it performs an element-wise sum operation on the above multiplied resulting matrix and original features to obtain the final representations reflecting long-range contexts.
  ![Image](chann.png)
 <!-- <p align="center">
 <img src= chann.png/ width=50% height=50%>
 </p> -->
-In channel attention module the process is like position attention module except for the first step, in which channel attention matrix is calculated in channel dimension. In the end it collects the output from both attention module.
+In the channel attention module, the process is like the position attention module except for the first step, in which the channel attention matrix is calculated in the channel dimension. In the end, it collects the output from both attention modules.
 
 
 ## Architecture addition
@@ -64,7 +64,7 @@ The above clustering algorthim is used for both attention layers in the DANet ar
 
 
 ## Dataset
-The dataset used was PASCAL Visual Object Classes (VOC) dataset.  The PASCAL Visual Object Classes (VOC) 2012 dataset contains 20 object categories including vehicles, household, animals, and some others. Every image in this dataset has pixel-level segmentation annotations, bounding box annotations, and object class annotations. This dataset has been widely used as a benchmark for object detection, semantic segmentation, and classification tasks. The PASCAL VOC dataset is split into three subsets: 1,464 images for training, 1,449 images for validation and a private testing set. The Dual Attention Network for Scene Segmentation model on which our model is based on uses Cityscapes, PASCAL VOC 2012, PASCAL Context, COCO Stuff datasets.
+The dataset used was PASCAL Visual Object Classes (VOC) dataset.  The PASCAL Visual Object Classes (VOC) 2012 dataset contains 20 object categories including vehicles, households, animals, and some others. Every image in this dataset has pixel-level segmentation annotations, bounding box annotations, and object class annotations. This dataset has been widely used as a benchmark for object detection, semantic segmentation, and classification tasks. The PASCAL VOC dataset is split into three subsets: 1,464 images for training, 1,449 images for validation, and a private testing set. The Dual Attention Network for Scene Segmentation model on which our model is based upon uses Cityscapes, PASCAL VOC 2012, PASCAL Context, and COCO Stuff datasets.
 
 ## Experiment Setup and Results
 We trained DANet for PASCAL VOC 2012 using the following hyperparameters:
@@ -99,18 +99,18 @@ Sometimes, however, the limitations of a linear clustering model as K-Means beco
 <img src= car.png/ width=70% height=70%>
 </p> -->
 
-Indeed while it is possible to argue that ClusterDANet does at least see the car, compared to normal DANet, its segmentation accuracy nullifies the advantage. We can see how a clear square is cut out in the generated segmentation map. This is probably due the linear nature of the decision boundaries imposed by K-Means.
-
+Indeed while it is possible to argue that ClusterDANet does at least see the car, compared to normal DANet, its segmentation accuracy nullifies the advantage. We can see how a clear square is cut out in the generated segmentation map. This is probably due to the linear nature of the decision boundaries imposed by K-Means.
 _Here we report the final results (still running accuracy on test set, however seems ClusterDANet is better)_
 
 ## Conclusion
-We proposed an architecture extension to the work of Fu et al. based on the model presented by Weijian Xu et a. Our extension is a the addition of a clustering layer before the attention modules of the original network, in order to explicitly model the features present in a given image. We did so by following the intuition that by clustering together parts of an image, the attention layer would be able to better identify meaningful relationships between the objects of a picture and therefore the final architecture would provide better segmentation results. 
+We proposed an architecture extension to the work of Fu et al. based on the model presented by Weijian Xu et a. Our extension is an addition of a clustering layer before the attention modules of the original network, to explicitly model the features present in a given image. We did so by following the intuition that by clustering together parts of an image, the attention layer would be able to better identify meaningful relationships between the objects of a picture, and therefore the final architecture would provide better segmentation results. 
 
-Due to low GPU resources we were only able to test our intuition on a limited budget. The results we obtained for our extension and for the baseline original architecture are therefore short compared to the state of the art. However they do offer insights on the comparison between the two models, and given the fact that normal DANet currently provides state of the arts comparable results for segmentation, comparing our model to DANet also offer insights on how it would perform given the right resources. 
+Due to low GPU resources, we were only able to test our intuition on a limited budget. The results we obtained for our extension and the baseline original architecture are therefore short compared to the state of the art. However they do offer insights on the comparison between the two models, and given the fact that normal DANet currently provides state of the arts comparable results for segmentation, comparing our model to DANet also offers insights on how it would perform given the right resources. 
 
-ClusterDANet obtains better results than DANet for scene segmentation over the PASCAL VOC 2012 dataset (_if turns out to not be true they would be at least comparable_). Therefore our proposed extension has potential for achieving results comparable to the state of the art. Furthermore it seems that ClusterDANet sees bigger objects at a greater extent than DANet.
+ClusterDANet obtains better results than DANet for scene segmentation over the PASCAL VOC 2012 dataset (_if turns out to not be true they would be at least comparable_). Therefore our proposed extension has the potential for achieving results comparable to the state of the art. Furthermore, it seems that ClusterDANet sees bigger objects to a greater extent than DANet.
 
-Future work could build upon our extension in order to tune the required hyperparameters (as number of clusters or epochs), in order to obtain the best possible results ClusterDANet could offer. Furthermore the clustering layer could be extend with a clustering algorithm different from K-Means, where the resulting decision boundaries are non linear.
+Future work could build upon our extension in order to tune the required hyperparameters (as the number of clusters or epochs), in order to obtain the best possible results ClusterDANet could offer. Furthermore, the clustering layer could be extended with a clustering algorithm different from K-Means, where the resulting decision boundaries are non-linear.
+
 * * * * *
 
 <h3>
