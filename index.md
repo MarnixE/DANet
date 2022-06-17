@@ -76,7 +76,10 @@ The dataset used was PASCAL Visual Object Classes (VOC) dataset.  The PASCAL Vis
 We trained DANet for PASCAL VOC 2012 using the following hyperparameters:
 - epochs: 22
 - batches: 6
+- optimazer: SGD
 - learning rate: 0.003
+- momentum: 0.9
+- weight-decay: 0.0001
 - base size: 520
 - crop size: 480
 
