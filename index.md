@@ -4,6 +4,7 @@
 * Tishar Sinha (5277876) - <T.Sinha-2@student.tudelft.nl>
 * Dajt Mullaj (5649455) - <d.mullaj@student.tudelft.nl>
 
+You can find our blog post [online](https://marnixe.github.io/DANet/) coupled with our [repository](https://github.com/MarnixE/DANet).
 
 ## Introduction
 In this blog, Duel Attention Network (DANet) will be explained, and a proposal for an architecture improvement will be given and evaluated. In 2019, Fu et al. \[1] published an article that introduces the DANet. The architecture is used for scene segmentation. This is a fundamental and challenging problem which involves segmenting different image regions with semantic categories including things (e.g. building, grass, sky) and discrete objects (e.g. pedestrian, car, bicycle). The study can applied to applications in automatic driving, robot sensing and image editing. In order to effectively solve the task of scene segmentation. A distinction needs to be made effectively distinguish between objects of similar appearance. For instance, regions of 'road' and 'concrete' can be indistinguishable. Likewise, the objects of 'cars' may often be affected by scales, occlusion and illumination. Therefore, it is required to enhance the discriminative ability of feature representations at the pixel-level as well as  global level. This is precisely what the DANet aims to accomplish. Namely, they introduced an architecture with both a position and a channel attention module, to capture both local and global information.
