@@ -123,6 +123,5 @@ References:
     modeling.](https://arxiv.org/pdf/1809.02983.pdf) 
 
 [2]: **Weijian Xu, Yifan Xu, Huaijin Wang & Zhuowen Tu1** (2021).
-    [ATTENTIONAL CONSTELLATION NETS FOR FEW-SHOT
-LEARNING](https://openreview.net/pdf?id=vujTf_I8Kmc)
+    [Attention Constellation Nets for Few-Shot Learning](https://openreview.net/pdf?id=vujTf_I8Kmc)
     
