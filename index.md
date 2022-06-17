@@ -78,7 +78,7 @@ Due to the limitations of the GPU that was available to us we had to limit ourse
 
 After training DANet we therefore trained our extended version (ClusterDANet) utilizing the same hyperparameters. We trained the models using Google Colab, on a single GPU. Normal DANet took approximately 25 minutes per epoch, while ClusterDANet completed every epoch in 38 minutes. The training loss of the two models followed similar patterns. 
 
-Both models results are not very clear compare to the ground truth labels. We can however compare them against each other. The following images were obtained from the validation set of PASCAL VOC 2012.
+Both models results are not very clear compare to the ground truth labels. We can however compare them against each other. The following images and results were obtained from the validation set of PASCAL VOC 2012.
 
  ![Image](people.png)
 <!-- <p align="center">
@@ -100,14 +100,17 @@ Sometimes, however, the limitations of a linear clustering model as K-Means beco
 </p> -->
 
 Indeed while it is possible to argue that ClusterDANet does at least see the car, compared to normal DANet, its segmentation accuracy nullifies the advantage. We can see how a clear square is cut out in the generated segmentation map. This is probably due to the linear nature of the decision boundaries imposed by K-Means.
-_Here we report the final results (still running accuracy on test set, however seems ClusterDANet is better)_
+
+The final accuracies for DANet and ClusterDANet are the following:
+-**DANet** pixAcc: 0.6998, mIoU: 0.0629 
+-**ClusterDANet** pixAcc: 0.6951, mIoU: 0.0588 
 
 ## Conclusion
 We proposed an architecture extension to the work of Fu et al. based on the model presented by Weijian Xu et a. Our extension is an addition of a clustering layer before the attention modules of the original network, to explicitly model the features present in a given image. We did so by following the intuition that by clustering together parts of an image, the attention layer would be able to better identify meaningful relationships between the objects of a picture, and therefore the final architecture would provide better segmentation results. 
 
 Due to low GPU resources, we were only able to test our intuition on a limited budget. The results we obtained for our extension and the baseline original architecture are therefore short compared to the state of the art. However they do offer insights on the comparison between the two models, and given the fact that normal DANet currently provides state of the arts comparable results for segmentation, comparing our model to DANet also offers insights on how it would perform given the right resources. 
 
-ClusterDANet obtains better results than DANet for scene segmentation over the PASCAL VOC 2012 dataset (_if turns out to not be true they would be at least comparable_). Therefore our proposed extension has the potential for achieving results comparable to the state of the art. Furthermore, it seems that ClusterDANet sees bigger objects to a greater extent than DANet.
+ClusterDANet obtains comparable results to DANet for scene segmentation over the PASCAL VOC 2012 dataset. The results for ClusterDANet are sligthly worse. This could be due to the not extensive training, since because of clustering our extended architecture seems to label a greater number of pixels than normal DANet, which couls result in worse comparative performance if not tuned correctly. However since the results are so close together we think our proposed extension has the potential for achieving results comparable to the state of the art. Furthermore, it seems that ClusterDANet sees bigger objects to a greater extent than DANet.
 
 Future work could build upon our extension in order to tune the required hyperparameters (as the number of clusters or epochs), in order to obtain the best possible results ClusterDANet could offer. Furthermore, the clustering layer could be extended with a clustering algorithm different from K-Means, where the resulting decision boundaries are non-linear.
 
