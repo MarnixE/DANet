@@ -14,16 +14,22 @@ In this blog, Duel Attention Network (DANet) will be explained, and a proposal f
 <!-- <p align="center">
 <img src= cv-architecture.png/ width=70% height=70%>
 </p> -->
+*Figure 1: Architecture of DANet as proposed by Fu et al.*
+
 Dual Attention Network has two types of attention modules to adaptively aggregate long-range contextual information to improve feature representation for pixel-level prediction in scene segmentation. Initially, it employs a pre-trained residual network with the dilated as the backbone. Then the features from the dilated residual network would be fed into two parallel attention modules named position attention module and channel attention module. The position attention module selectively aggregates the feature at each position by a weighted sum of the features at all positions. So that, similar features would be related to each other regardless of their distances. On the other hand, the channel attention module selectively emphasizes interdependent channel maps by integrating associated features among all channel maps.
  ![Image](position.png)
 <!-- <p align="center">
 <img src= position.png/ width=50% height=50%>
 </p> -->
+*Figure 2: Position Attention module of DANet.*
+
 It first applies a convolution layer to get the features of dimension reduction and then feeds it to the positional attention module. The positional attention module first generates a spatial attention matrix that models the spatial relationship between any two pixels of the features. Next, it performs a matrix multiplication between the attention matrix and the original features. Lastly, it performs an element-wise sum operation on the above multiplied resulting matrix and original features to obtain the final representations reflecting long-range contexts.
  ![Image](chann.png)
 <!-- <p align="center">
 <img src= chann.png/ width=50% height=50%>
 </p> -->
+*Figure 3: Channel Attention module of DANet.*
+
 In the channel attention module, the process is like the position attention module except for the first step, in which the channel attention matrix is calculated in the channel dimension. In the end, it collects the output from both attention modules.
 
 
@@ -61,7 +67,7 @@ The above clustering algorthim is used for both attention layers in the DANet ar
 <!-- <p align="center">
 <img src= improved-architecture.png/ width=70% height=70%>
 </p> -->
-
+*Figure 4: Our extended model architecure (ClusterDANet) with the added clustering layers highligthed.*
 
 ## Dataset
 The dataset used was PASCAL Visual Object Classes (VOC) dataset.  The PASCAL Visual Object Classes (VOC) 2012 dataset contains 20 object categories including vehicles, households, animals, and some others. Every image in this dataset has pixel-level segmentation annotations, bounding box annotations, and object class annotations. This dataset has been widely used as a benchmark for object detection, semantic segmentation, and classification tasks. The PASCAL VOC dataset is split into three subsets: 1,464 images for training, 1,449 images for validation, and a private testing set. The Dual Attention Network for Scene Segmentation model on which our model is based upon uses Cityscapes, PASCAL VOC 2012, PASCAL Context, and COCO Stuff datasets.
@@ -84,11 +90,13 @@ Both models results are not very clear compare to the ground truth labels. We ca
 <!-- <p align="center">
 <img src= people.png/ width=70% height=70%>
 </p> -->
+*Figure 5: Results of ClusterDANet and DANet on segmenting an image with different objects from the validation set.*
 
  ![Image](cat.png)
 <!-- <p align="center">
 <img src= cat.png/ width=70% height=70%>
 </p> -->
+*Figure 6: Results of ClusterDANet and DANet on segmenting an image with one object from the validation set.*
 
 As is shown in the pictures, typically, ClusterDANet tends to pick up more details when creating a segmentation mask for an object. This supports our intuition that using clustering we can relate bigger components of a picture to each other, rather than each individual pixel. Indeed it seems more intuitive to first differentiate between different features of an image (an object part, a hand, a wheel...) and then try to distinguish meaningful relationships between these features using attention (therefore a hand with a head, a wheel with a car...). By adding a clustering layer we try to explicitly model these features, rather than relying only on the implicitly learned ones by the convolutional layers. 
 
@@ -98,6 +106,7 @@ Sometimes, however, the limitations of a linear clustering model as K-Means beco
 <!-- <p align="center">
 <img src= car.png/ width=70% height=70%>
 </p> -->
+*Figure 7: Results of ClusterDANet and DANet on segmenting an image from the validation set. The linear clustering boundaries of K-Means could explain why ClusterDANet segments the car as a square.*
 
 Indeed while it is possible to argue that ClusterDANet does at least see the car, compared to normal DANet, its segmentation accuracy nullifies the advantage. We can see how a clear square is cut out in the generated segmentation map. This is probably due to the linear nature of the decision boundaries imposed by K-Means.
 
