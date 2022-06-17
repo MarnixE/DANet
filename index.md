@@ -37,7 +37,7 @@ In the channel attention module, the process is like the position attention modu
 To increase the performance of the architecture we wanted to add clustering layers before the 
 self-attention layers. This idea was based on a paper by <a href="https://openreview.net/pdf?id=vujTf_I8Kmc" title="Link to the paper clustering" >Weijian Xu et al (2021)</a> \[2]. Here they implement cell feature clustering. Where cell features are defined as individual local feature at a position in the feature map. By clustering these cell features they are able to model the underlying distribution of input cell features. Through this method, the authors were able to bring 2.5-6.4% performance increase over baseline models. 
 
-The method employed by the authors and for this project works by clustering individual features at each location in the feature map (i.e. cell features) into multiple centres and employing the cluster centres as filters. This is done using a mini-batch soft k-means algorithm to cluster the cell features approximately. We report here the steps they proposed in their algorithm as they were layed out in their paper:
+The method employed by the authors and for this project works by clustering individual features at each location in the feature map (i.e. cell features) into multiple centers and employing the cluster centers as filters. This is done using a mini-batch soft k-means algorithm to cluster the cell features approximately. We report here the steps they proposed in their algorithm as they were laid out in their paper:
 
 -	**Initialization.** Here you randomly initialize global cluster centers \\(V = \{v_1, v_2, ..., v_K\}\\) and a counter \\(s = (s_1, s_2, ..., s_K) = \textbf{0}\\).
 
@@ -48,7 +48,7 @@ The method employed by the authors and for this project works by clustering indi
 <img src= d_ik.png/ width=50% height=30%>
 </p> -->
 
-- **Centroid Movement.** In the equation below we formalate \\(\Delta \mathbf{s} = \sum_{i} m_{i}\\) by summing all maps 
+- **Centroid Movement.** In the equation below we formulate \\(\Delta \mathbf{s} = \sum_{i} m_{i}\\) by summing all maps 
 \\(m_{i}= ( m_{i1}, m_{i2}, ... m_{iK} )\\). The mini-batch centers \\(v^{'}_k\\) are then updated to the global center 
 \\(v_k\\) with a momentum coefficient \\(\eta\\).
 
@@ -67,7 +67,7 @@ The above clustering algorthim is used for both attention layers in the DANet ar
 <!-- <p align="center">
 <img src= improved-architecture.png/ width=70% height=70%>
 </p> -->
-*Figure 4: Our extended model architecure (ClusterDANet) with the added clustering layers highligthed.*
+*Figure 4: Our extended model architecture (ClusterDANet) with the added clustering layers highlighted.*
 
 ## Dataset
 The dataset used was PASCAL Visual Object Classes (VOC) dataset.  The PASCAL Visual Object Classes (VOC) 2012 dataset contains 20 object categories including vehicles, households, animals, and some others. Every image in this dataset has pixel-level segmentation annotations, bounding box annotations, and object class annotations. This dataset has been widely used as a benchmark for object detection, semantic segmentation, and classification tasks. The PASCAL VOC dataset is split into three subsets: 1,464 images for training, 1,449 images for validation, and a private testing set. The Dual Attention Network for Scene Segmentation model on which our model is based upon uses Cityscapes, PASCAL VOC 2012, PASCAL Context, and COCO Stuff datasets.
@@ -76,7 +76,7 @@ The dataset used was PASCAL Visual Object Classes (VOC) dataset.  The PASCAL Vis
 We trained DANet for PASCAL VOC 2012 using the following hyperparameters:
 - epochs: 22
 - batches: 6
-- optimazer: SGD
+- optimizer: SGD
 - learning rate: 0.003
 - momentum: 0.9
 - weight-decay: 0.0001
@@ -122,7 +122,7 @@ We proposed an architecture extension to the work of Fu et al. based on the mode
 
 Due to low GPU resources, we were only able to test our intuition on a limited budget. The results we obtained for our extension and the baseline original architecture are therefore short compared to the state of the art. However they do offer insights on the comparison between the two models, and given the fact that normal DANet currently provides state of the arts comparable results for segmentation, comparing our model to DANet also offers insights on how it would perform given the right resources. 
 
-ClusterDANet obtains comparable results to DANet for scene segmentation over the PASCAL VOC 2012 dataset. The results for ClusterDANet are sligthly worse. This could be due to the not extensive training, since because of clustering our extended architecture seems to label a greater number of pixels than normal DANet, which couls result in worse comparative performance if not tuned correctly. However since the results are so close together we think our proposed extension has the potential for achieving results comparable to the state of the art. Furthermore, it seems that ClusterDANet sees bigger objects to a greater extent than DANet.
+ClusterDANet obtains comparable results to DANet for scene segmentation over the PASCAL VOC 2012 dataset. The results for ClusterDANet are slightly worse. This could be due to the not extensive training, since because of clustering our extended architecture seems to label a greater number of pixels than normal DANet, which could result in worse comparative performance if not tuned correctly. However since the results are so close together we think our proposed extension has the potential for achieving results comparable to the state of the art. Furthermore, it seems that ClusterDANet sees bigger objects to a greater extent than DANet.
 
 Future work could build upon our extension in order to tune the required hyperparameters (as the number of clusters or epochs), in order to obtain the best possible results ClusterDANet could offer. Furthermore, the clustering layer could be extended with a clustering algorithm different from K-Means, where the resulting decision boundaries are non-linear.
 
