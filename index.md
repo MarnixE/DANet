@@ -102,8 +102,8 @@ Sometimes, however, the limitations of a linear clustering model as K-Means beco
 Indeed while it is possible to argue that ClusterDANet does at least see the car, compared to normal DANet, its segmentation accuracy nullifies the advantage. We can see how a clear square is cut out in the generated segmentation map. This is probably due to the linear nature of the decision boundaries imposed by K-Means.
 
 The final accuracies for DANet and ClusterDANet are the following:
--**DANet** pixAcc: 0.6998, mIoU: 0.0629 
--**ClusterDANet** pixAcc: 0.6951, mIoU: 0.0588 
+- **DANet** pixAcc: 0.6998, mIoU: 0.0629 
+- **ClusterDANet** pixAcc: 0.6951, mIoU: 0.0588 
 
 ## Conclusion
 We proposed an architecture extension to the work of Fu et al. based on the model presented by Weijian Xu et a. Our extension is an addition of a clustering layer before the attention modules of the original network, to explicitly model the features present in a given image. We did so by following the intuition that by clustering together parts of an image, the attention layer would be able to better identify meaningful relationships between the objects of a picture, and therefore the final architecture would provide better segmentation results. 
