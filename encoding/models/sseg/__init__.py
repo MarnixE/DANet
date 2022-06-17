@@ -8,6 +8,7 @@ from .deeplab import *
 from .upernet import *
 from .dran import *
 from .danet import *
+from .clusterdanet import *
 
 def get_segmentation_model(name, **kwargs):
     models = {
@@ -19,6 +20,7 @@ def get_segmentation_model(name, **kwargs):
         'upernet': get_upernet,
         'deeplab': get_deeplab,
         'dran':get_dran,
-        'danet': get_danet
+        'danet': get_danet,
+        'clusterdanet':get_clusterdanet
     }
     return models[name.lower()](**kwargs)
