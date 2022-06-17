@@ -6,7 +6,7 @@
 
 
 ## Introduction
-In this blog, Duel Attention Network (DANet) will be explained, and a proposal for an architecture improvement will be given and evaluated. In 2019, Fu et al. published an article that introduces the DANet. The architecture is used for scene segmentation. This is a fundamental and challenging problem which involves segmenting different image regions with semantic categories including things (e.g. building, grass, sky) and discrete objects (e.g. pedestrian, car, bicycle). The study can applied to applications in automatic driving, robot sensing and image editing. In order to effectively solve the task of scene segmentation. A distinction needs to be made effectively distinguish between objects of similar appearance. For instance, regions of 'road' and 'concrete' can be indistinguishable. Likewise, the objects of 'cars' may often be affected by scales, occlusion and illumination. Therefore, it is required to enhance the discriminative ability of feature representations at the pixel-level as well as  global level. This is precisely what the DANet aims to accomplish. Namely, they introduced an architecture with both a position and a channel attention module, to capture both local and global information.
+In this blog, Duel Attention Network (DANet) will be explained, and a proposal for an architecture improvement will be given and evaluated. In 2019, Fu et al. [1] published an article that introduces the DANet. The architecture is used for scene segmentation. This is a fundamental and challenging problem which involves segmenting different image regions with semantic categories including things (e.g. building, grass, sky) and discrete objects (e.g. pedestrian, car, bicycle). The study can applied to applications in automatic driving, robot sensing and image editing. In order to effectively solve the task of scene segmentation. A distinction needs to be made effectively distinguish between objects of similar appearance. For instance, regions of 'road' and 'concrete' can be indistinguishable. Likewise, the objects of 'cars' may often be affected by scales, occlusion and illumination. Therefore, it is required to enhance the discriminative ability of feature representations at the pixel-level as well as  global level. This is precisely what the DANet aims to accomplish. Namely, they introduced an architecture with both a position and a channel attention module, to capture both local and global information.
 
 
 ## Network architecture
@@ -35,7 +35,7 @@ In the channel attention module, the process is like the position attention modu
 
 ## Architecture addition
 To increase the performance of the architecture we wanted to add clustering layers before the 
-self-attention layers. This idea was based on a paper by <a href="https://openreview.net/pdf?id=vujTf_I8Kmc" title="Link to the paper clustering" >Weijian Xu et al (2021)</a>. Here they implement cell feature clustering. Where cell features are defined as individual local feature at a position in the feature map. By clustering these cell features they are able to model the underlying distribution of input cell features. Through this method, the authors were able to bring 2.5-6.4% performance increase over baseline models. 
+self-attention layers. This idea was based on a paper by <a href="https://openreview.net/pdf?id=vujTf_I8Kmc" title="Link to the paper clustering" >Weijian Xu et al (2021)</a> [2]. Here they implement cell feature clustering. Where cell features are defined as individual local feature at a position in the feature map. By clustering these cell features they are able to model the underlying distribution of input cell features. Through this method, the authors were able to bring 2.5-6.4% performance increase over baseline models. 
 
 The method employed by the authors and for this project works by clustering individual features at each location in the feature map (i.e. cell features) into multiple centres and employing the cluster centres as filters. This is done using a mini-batch soft k-means algorithm to cluster the cell features approximately. We report here the steps they proposed in their algorithm as they were layed out in their paper:
 
@@ -125,9 +125,7 @@ Future work could build upon our extension in order to tune the required hyperpa
 
 ## References
 
-[1]: **Jun Fu, Jing Liu, Haijie Tian, Yong Li, Yongjun Bao, Zhiwei Fang, Hanqing Lu** (2019). [Dual Attention Network for Scene Segmentation
-    modeling.](https://arxiv.org/pdf/1809.02983.pdf) 
+- [1]: **Jun Fu, Jing Liu, Haijie Tian, Yong Li, Yongjun Bao, Zhiwei Fang, Hanqing Lu** (2019). [Dual Attention Network for Scene Segmentation modeling.](https://arxiv.org/pdf/1809.02983.pdf) 
 
-[2]: **Weijian Xu, Yifan Xu, Huaijin Wang & Zhuowen Tu1** (2021).
-    [Attention Constellation Nets for Few-Shot Learning](https://openreview.net/pdf?id=vujTf_I8Kmc)
+- [2]: **Weijian Xu, Yifan Xu, Huaijin Wang & Zhuowen Tu1** (2021). [Attention Constellation Nets for Few-Shot Learning](https://openreview.net/pdf?id=vujTf_I8Kmc)
     
