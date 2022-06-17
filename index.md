@@ -114,12 +114,7 @@ ClusterDANet obtains comparable results to DANet for scene segmentation over the
 
 Future work could build upon our extension in order to tune the required hyperparameters (as the number of clusters or epochs), in order to obtain the best possible results ClusterDANet could offer. Furthermore, the clustering layer could be extended with a clustering algorithm different from K-Means, where the resulting decision boundaries are non-linear.
 
-* * * * *
-
-<h3>
-References:
-
-</h3>
+## References
 
 [1]: **Jun Fu, Jing Liu, Haijie Tian, Yong Li, Yongjun Bao, Zhiwei Fang, Hanqing Lu** (2019). [Dual Attention Network for Scene Segmentation
     modeling.](https://arxiv.org/pdf/1809.02983.pdf) 
